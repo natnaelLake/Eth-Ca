@@ -1,0 +1,145 @@
+.ethiopian-calendar {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #1976d2;
+  color: white;
+}
+
+.year-selection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.year-input {
+  width: 80px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.year-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.year-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.today-button {
+  color: white;
+}
+
+.today-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.month-selection {
+  padding: 20px;
+}
+
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.month-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.today-month-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.month-button {
+  min-height: 40px;
+  font-size: 0.9em;
+}
+
+.month-view {
+  padding: 16px;
+}
+
+.month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.month-year {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+}
+
+.day-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.day-header {
+  text-align: center;
+  font-weight: bold;
+  color: #666;
+  padding: 8px 4px;
+  font-size: 0.9em;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-button {
+  min-height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  font-size: 0.9em;
+}
+
+.day-button.selected {
+  background: #1976d2;
+  color: white;
+}
+
+.day-button.today {
+  background: #ff9800;
+  color: white;
+}
+
+.day-button:disabled {
+  opacity: 0.3;
+}

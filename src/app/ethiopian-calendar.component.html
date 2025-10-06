@@ -1,0 +1,77 @@
+<div class="ethiopian-calendar">
+  <!-- Year Navigation -->
+  <div class="calendar-header">
+    <button mat-icon-button (click)="previousYear()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div class="year-selection">
+      <input 
+        type="number" 
+        [(ngModel)]="currentEthiopianYear" 
+        (change)="onYearChange()"
+        class="year-input"
+        min="1900" 
+        max="2100"
+        placeholder="Year">
+      <button mat-icon-button (click)="goToToday()" class="today-button" matTooltip="Go to Today">
+        <mat-icon>today</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button (click)="nextYear()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <!-- Month Selection -->
+  <div class="month-selection" *ngIf="!selectedMonth">
+    <div class="month-header">
+      <h3>Select Month</h3>
+      <button mat-raised-button color="accent" (click)="goToToday()" class="today-month-button">
+        <mat-icon>today</mat-icon>
+        Go to Today
+      </button>
+    </div>
+    <div class="month-grid">
+      <button 
+        *ngFor="let month of ethiopianMonths; let i = index"
+        mat-raised-button
+        class="month-button"
+        (click)="selectMonth(i + 1)">
+        {{ month }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Month View -->
+  <div class="month-view" *ngIf="selectedMonth">
+    <!-- Month Header -->
+    <div class="month-header">
+      <button mat-icon-button (click)="goBackToMonths()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="month-year">{{ getMonthName(selectedMonth) }} {{ currentEthiopianYear }}</span>
+      <button mat-icon-button (click)="nextMonth()" [disabled]="selectedMonth >= 13">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+
+    <!-- Day Headers -->
+    <div class="day-headers">
+      <div *ngFor="let day of dayNames" class="day-header">{{ day }}</div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar-grid">
+      <button 
+        *ngFor="let day of calendarDays; let i = index"
+        mat-button
+        class="day-button"
+        [class.selected]="isSelected(day)"
+        [class.today]="isToday(day)"
+        [disabled]="!day"
+        (click)="selectDate(day)">
+        {{ day }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+  <mat-card class="main-card">
+    <mat-card-header>
+      <mat-card-title>Ethiopian Calendar App</mat-card-title>
+      <mat-card-subtitle>ኢትዮጵያዊ የቀን መቁጠሪያ</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="date-picker-section">
+        <h3>ቀን ይምረጡ / Select Date</h3>
+        <app-ethiopian-calendar 
+          [selectedDate]="selectedDate.value"
+          (dateSelected)="onDateSelected($event)">
+        </app-ethiopian-calendar>
+        <div class="selection-feedback" *ngIf="selectedDate.value && isValidDate(selectedDate.value)">
+          <p class="selected-date-info">
+            <strong>Selected Date:</strong> {{ getEthiopianDate() }} 
+            <span class="gregorian-info">({{ getGregorianDate() }})</span>
+          </p>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="conversion-section" *ngIf="selectedDate.value">
+        <h3>Date Conversion</h3>
+        
+        <div class="conversion-grid">
+          <div class="conversion-item">
+            <h4>Ethiopian Date</h4>
+            <p class="ethiopian-date">{{ getEthiopianDate() }}</p>
+          </div>
+          
+          <div class="conversion-item">
+            <h4>Gregorian Date</h4>
+            <p class="gregorian-date">{{ getGregorianDate() }}</p>
+          </div>
+        </div>
+
+        <div class="additional-info">
+          <h4>Additional Information</h4>
+          <p><strong>Ethiopian Year:</strong> {{ getEthiopianYear() }}</p>
+          <p><strong>Ethiopian Month:</strong> {{ getEthiopianMonth() }}</p>
+          <p><strong>Ethiopian Day:</strong> {{ getEthiopianDay() }}</p>
+          <p><strong>Days in Month:</strong> {{ getDaysInEthiopianMonth() }}</p>
+          <p><strong>Is Leap Year:</strong> {{ isEthiopianLeapYear() ? 'Yes' : 'No' }}</p>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
